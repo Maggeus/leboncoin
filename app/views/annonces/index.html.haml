@@ -1,0 +1,22 @@
+%p#notice= notice
+%h1 Listing Annonces
+%table
+  %thead
+    %tr
+      %th Title
+      %th Body
+      %th Price
+      %th Id user
+      %th{:colspan => "3"}
+  %tbody
+    - @annonces.each do |annonce|
+      %tr
+        %td= annonce.title
+        %td= annonce.body
+        %td= annonce.price
+        %td= annonce.id_user
+        %td= link_to 'Show', annonce
+        %td= link_to 'Edit', edit_annonce_path(annonce)
+        %td= link_to 'Destroy', annonce, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Annonce', new_annonce_path
