@@ -12,21 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br>
+    <%= f.label :titre %><br>
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :body %><br>
+    <%= f.label :corps %><br>
     <%= f.text_area :body %>
   </div>
   <div class="field">
-    <%= f.label :price %><br>
+    <%= f.label :prix %><br>
     <%= f.number_field :price %>
   </div>
-  <div class="field">
-    <%= f.label :id_user %><br>
-    <%= f.number_field :id_user %>
-  </div>
+     <%= f.hidden_field :id_user, :value => current_user.id %>
   <div class="actions">
     <%= f.submit %>
   </div>

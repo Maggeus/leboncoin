@@ -1,22 +1,24 @@
 %p#notice= notice
-%h1 Listing Annonces
-%table
-  %thead
-    %tr
-      %th Title
-      %th Body
-      %th Price
-      %th Id user
-      %th{:colspan => "3"}
-  %tbody
-    - @annonces.each do |annonce|
+%h1 Annonces disponibles
+%section.container.content-section.text-center
+  %table
+    %thead
       %tr
-        %td= annonce.title
-        %td= annonce.body
-        %td= annonce.price
-        %td= annonce.id_user
-        %td= link_to 'Show', annonce
-        %td= link_to 'Edit', edit_annonce_path(annonce)
-        %td= link_to 'Destroy', annonce, method: :delete, data: { confirm: 'Are you sure?' }
+        %th Titre de l'annonce
+        %th Annonce
+        %th Prix
+        %th{:colspan => "30"}
+    %tbody
+      - @annonces.each do |annonce|
+        %tr
+          %td= link_to annonce.title, annonce
+          %td= annonce.body
+          %td= annonce.price
+          %td= annonce.id_user
+          - if user_signed_in?
+            - if annonce.id_user == current_user.id || current_user.admin
+              %td= link_to 'Editer', edit_annonce_path(annonce)
+              %td= link_to 'Supprimer', annonce, method: :delete, data: { confirm: 'Sûr ?' }
 %br/
-= link_to 'New Annonce', new_annonce_path
+= link_to 'Déposez une nouvelle annonce', new_annonce_path
+%br/
