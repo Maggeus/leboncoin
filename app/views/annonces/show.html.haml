@@ -1,0 +1,15 @@
+
+%p#notice= notice
+%p
+	%strong Titre:
+	= @annonce.title
+%p
+	%strong Annonce:
+	= @annonce.body
+%p
+	%strong Prix:
+	= @annonce.price
+%p
+	- if @annonce.id_user == current_user.id || current_user.admin
+		= link_to 'Editer', edit_annonce_path(@annonce)
+		=link_to 'Retour', annonces_path

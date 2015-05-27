@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Leboncoin - ENSIIE</title>
+    <title>La Caverne de l'ENSIIE</title>
 
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -27,7 +27,7 @@
                     <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand page-scroll" href="#page-top">
-                    <i class="fa fa-play-circle"></i>  <span class="light">Bizzi</span>
+                    <i class="fa fa-play-circle"></i>  <span class="light"><%= link_to "La Caverne de l'ENSIIE", "/" %></span>
                 </a>
             </div>
 
@@ -39,20 +39,29 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="annonces/new">Déposer une annonce</a>
+                        <%= link_to 'Déposer une annonce', new_annonce_path %>
                     </li>
                     <li>
-                        <a class="page-scroll" href="offres.html">Offres</a>
+                        <%= link_to 'Offres', annonces_path %>
                     </li>
                     <li>
-                        <a class="page-scroll" href="demandes.html">Demandes</a>
+                    <%= link_to 'Demandes', annonces_path %>
+                    </li>
+                    <% if user_signed_in? %>
+                    <li>
+                        <%= link_to 'Mon Compte', edit_user_registration_path %>
+                    </li>
+                     <li>
+                       <%= link_to "Deconnexion", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+                    </li>
+                    <% else %>
+                    <li>
+                    <%= link_to "Inscription", new_user_registration_path, :class => 'navbar-link'  %> 
                     </li>
                     <li>
-                        <a class="page-scroll" href="compte.html">Mon Compte</a>
+                    <%= link_to "Connexion", new_user_session_path, :class => 'navbar-link'  %>
                     </li>
-                    <li>
-                        <a class="page-scroll" href="aide.html">Aide</a>
-                    </li>
+                    <% end %>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -60,33 +69,32 @@
         <!-- /.container -->
     </nav>
 
-    <% if notice %>
+<section class="container content-section text-center">
+</br>
+</br>
+<% if notice %>
   <p class="alert alert-success"><%= notice %></p>
 <% end %>
 <% if alert %>
   <p class="alert alert-danger"><%= alert %></p>
 <% end %>
-<section class="container content-section text-center">
 <%= yield %>
 </section>
     
     <!-- Contact Section -->
+
     <section id="contact" class="container content-section text-center">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
-                <h2>Contact Start Bootstrap</h2>
-                <p>Feel free to email us to provide some feedback on our templates, give us suggestions for new templates and themes, or to just say hello!</p>
-                <p><a href="mailto:feedback@startbootstrap.com">feedback@startbootstrap.com</a>
+                <h2>Contactez-nous</h2>
+                <p><a href="mailto:feedback_lacaverne@gmail.com">feedback_lacaverne@gmail.com</a>
                 </p>
-                <ul class="list-inline banner-social-buttons">
+                <ul class="list-inline banner-sponsor-buttons">
                     <li>
-                        <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
+                        <a href="http://www.ensiie.fr/" class="btn btn-default btn-lg"><i class="fa fa-ensiie fa-fw"></i> <span class="network-name">ENSIIE</span></a>
                     </li>
                     <li>
-                        <a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
-                    </li>
-                    <li>
-                        <a href="https://plus.google.com/+Startbootstrap/posts" class="btn btn-default btn-lg"><i class="fa fa-google-plus fa-fw"></i> <span class="network-name">Google+</span></a>
+                        <a href="https://scalingo.com/" class="btn btn-default btn-lg"><i class="fa fa-scalingo fa-fw"></i> <span class="network-name">Powered by Scalingo</span></a>
                     </li>
                 </ul>
             </div>
@@ -99,7 +107,7 @@
     <!-- Footer -->
     <footer>
         <div class="container text-center">
-            <p>Copyright &copy; Your Website 2014</p>
+            <p>Copyright &copy; La Caverne de l'ENSIIE 2015</p>
         </div>
     </footer>
 

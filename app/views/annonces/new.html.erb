@@ -1,10 +1,10 @@
-<h1>New Annonce</h1>
+<h1>Déposer une annonce</h1>
 
 <% if user_signed_in? %>
 <%= render 'form' %>
 <% else %>
-Connecte toi bouffon.
+Veuillez vous connectez pour pouvoir déposer une annonce.
 <% end %>
 </br>
-<%= link_to 'Back', annonces_path %>
+<%= link_to 'Retour vers les annonces.', annonces_path %>
 

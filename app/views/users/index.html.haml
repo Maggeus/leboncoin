@@ -1,0 +1,19 @@
+- if user_signed_in? && current_user.admin
+	%table
+		%thead
+			%tr
+				%th Utilisateur
+				%th Date d'inscription
+				%th Date de dernière connexion
+				%th Dernière adresse ip connue
+				%th Adresse ip courante
+		%tbody
+			- @users.each do |user|
+				%tr
+					%td= link_to user.email, user
+					%td= link_to user.created_at, user
+					%td= link_to user.last_sign_in_at, user
+					%td= link_to user.last_sign_in_ip, user
+					%td= link_to user.current_sign_in_ip, user
+-else
+	%p Vous n'êtes pas autorisé à être sur cette page.
